@@ -3,6 +3,8 @@
 //CREACION DE OBJETOS Y ARRAYS
 //APLICACION DE PROPIEDADES Y METODOS
 
+//Se ingresan diferentes marcas de productos en el objeto Producto con las propiedades nombre de producto, categoria, precio y stock del mismo.
+
 class Producto {
     constructor(nombre, categoria, precio, stock) {
         this.nombre = nombre.toUpperCase();
@@ -33,7 +35,7 @@ for (const precio in alimento8) {
 }
 
 console.log("cantidad" in alimento1);
-
+//Se consulta el stock de los diferentes productos
 for (let i = 0; i < 3; i++) {
     let entrada = parseInt(prompt("El stock de qué producto desea consultar?"));
     if (alimento1.sinStock(entrada)) {
@@ -53,7 +55,7 @@ for (let i = 0; i < 3; i++) {
     alert("El producto cuenta con " + alimento3.stock + ", en stock");
 }
 
-//Arrays
+//A partir de los datos mencionados anteriormente, se forma un Array con objeto
 
 const productoA = [];
 productoA.push(new Producto("Waltcan Adulto", "Alimento Balanceado", 1200, 0));
@@ -63,18 +65,29 @@ productoA.push(new Producto("Jaspe Cachorro", "Alimento Balanceado", 1000, 10));
 console.log(productoA);
 
 
-//Producto Sin Stock
-console.log(productoA[0]);
+//Se determina el producto sin stock, para eliminarlo luego
+console.log(productoA
+    .filter((p) => p.stock == "0")
+    .map((p) => p.nombre)
+);
 
-//Pedido a Jaspe
-
-console.log(productoA[2] + productoA[3]);
-
-//Lenght
+//Determinacion de stock para pedido de Jaspe
 
 console.log(productoA.length); //4
 
-//Push
+//Agregue componentes del objeto
 
 productoA.push(new Producto("DogChow Cachorro", "Alimento Balanceado", 1000, 10));
 console.log(productoA);
+productoA.unshift(new Producto("DogChow Adulto", "Alimento Balanceado", 1200, 15));
+console.log(productoA);
+
+//Elimine el producto sin stock
+
+productoA.shift(new Producto("Waltcan Adulto", "Alimento Balanceado", 1200, 0));
+console.log(productoA);
+
+//Cree un nuevo array con los productos
+
+const jaspe = productoA.slice(2, 4);
+console.log(jaspe)
