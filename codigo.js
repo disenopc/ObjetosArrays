@@ -4,7 +4,14 @@
 //APLICACION DE PROPIEDADES Y METODOS
 
 //Se ingresan diferentes marcas de productos en el objeto Producto con las propiedades nombre de producto, categoria, precio y stock del mismo.
+class Compra {
+    constructor(nombre, cantidad) {
+        this.nombre = nombre.toUpperCase();
+        this.cantidad = cantidad;
+    }
 
+}
+const compra = [];
 class Producto {
     constructor(nombre, categoria, precio, stock) {
         this.nombre = nombre.toUpperCase();
@@ -12,9 +19,6 @@ class Producto {
         this.precio = parseFloat(precio);
         this.stock = stock;
 
-    }
-    sinStock() {
-        return this.stock == 0;
     }
 
 }
@@ -36,25 +40,31 @@ for (const precio in alimento8) {
 
 console.log("cantidad" in alimento1);
 //Se consulta el stock de los diferentes productos
-for (let i = 0; i < 3; i++) {
-    let entrada = parseInt(prompt("El stock de qué producto desea consultar?"));
-    if (alimento1.sinStock(entrada)) {
-        alert(entrada + "No hay stock de ese producto" + alimento1.stock);
-        break;
-    }
-    alert("El producto cuenta con " + alimento1.stock + ", en stock");
-    if (alimento2.sinStock(entrada)) {
-        alert(entrada + "No hay stock de ese producto" + alimento2.stock);
-        break;
-    }
-    alert("El producto cuenta con " + alimento2.stock + ", en stock");
-    if (alimento3.sinStock(entrada)) {
-        alert(entrada + "No hay stock de ese producto" + alimento3.stock);
-        break;
-    }
-    alert("El producto cuenta con " + alimento3.stock + ", en stock");
-}
 
+function stock() {
+    let nombre;
+    do {
+        nombre = prompt("Ingrese el nombre del producto que desea");
+        if (nombre == "") {
+            break
+        }
+        let cantidad = parseInt(prompt("Ingrese la cantidad deseada"));
+        let compras = new Compra(nombre, cantidad);
+        let cantidadCompr = compra.find((c) => c.nombre === compras);
+        if (cantidadCompr) {
+            if (cantidadCompr.productoA[stock] < 0) {
+                compra.push(compras);
+                alert("El articulo que usted desea se encuentra disponible");
+                break;
+            }
+            alert("El articulo que usted desea NO se encuentra disponible");
+        }
+        alert("El producto ingresado no se encuentra en nuestra variedad de opciones ");
+
+    }
+    while (nombre !== "");
+}
+stock();
 //A partir de los datos mencionados anteriormente, se forma un Array con objeto
 
 const productoA = [];
@@ -91,3 +101,6 @@ console.log(productoA);
 
 const jaspe = productoA.slice(2, 4);
 console.log(jaspe)
+
+
+//Funcion conocer stock
