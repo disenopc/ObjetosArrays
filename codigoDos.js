@@ -1,7 +1,6 @@
 //El siguiente codigo, corresponde a un Ecommerce que permite descontar del stock los productos que el cliente elige
 //En el caso que no se encuentren en el stock va a salir por alerta que no hay de esos productos
 
-let descontarStock;
 class Compra {
     constructor(nombre, cantidad) {
         this.nombre = nombre.toUpperCase();
@@ -37,7 +36,7 @@ function stock() {
         let comprasIng = new Compra(nombre, cantidad);
         let stockDispo = productoA.find((c) => c.stock >= cantidad);
         if (stockDispo) {
-            if ((stockDispo.stock > "0") || (cantidad < productoA[4])) {
+            if (cantidad > 0) {
                 alert("El articulo que usted desea se encuentra disponible");
                 compras.push(comprasIng);
                 let indice = productoA.findIndex((c) => c.stock >= cantidad);
@@ -45,11 +44,12 @@ function stock() {
                 console.log(compras);
                 let ahora = new Date();
                 alert("Gracias por su compra" + ", " + ahora.toLocaleString());
-            } else {
-                alert("El articulo que usted desea NO se encuentra disponible");
+                break;
             }
+            alert("El articulo que usted desea NO se encuentra disponible");
+
         }
-        alert("El producto ingresado no se encuentra en nuestra variedad de opciones ");
+        alert("Gracias por elegirnos");
 
     }
     while (nombre !== "");
