@@ -10,7 +10,7 @@ class Compra {
 }
 class Producto {
     constructor(nombre, categoria, precio, stock) {
-        this.nombre = nombre.toUpperCase();
+        this.nombre = nombre;
         this.categoria = categoria;
         this.precio = parseFloat(precio);
         this.stock = stock;
@@ -36,7 +36,7 @@ function stock() {
         let comprasIng = new Compra(nombre, cantidad);
         let stockDispo = productoA.find((c) => c.stock >= cantidad);
         if (stockDispo) {
-            if (cantidad > 0) {
+            if ((cantidad > 0) && (cantidad > stock)) {
                 alert("El articulo que usted desea se encuentra disponible");
                 compras.push(comprasIng);
                 let indice = productoA.findIndex((c) => c.stock >= cantidad);
@@ -44,7 +44,7 @@ function stock() {
                 console.log(compras);
                 let ahora = new Date();
                 alert("Gracias por su compra" + ", " + ahora.toLocaleString());
-                break;
+                continue;
             }
             alert("El articulo que usted desea NO se encuentra disponible");
 
