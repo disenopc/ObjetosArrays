@@ -37,7 +37,7 @@ function stock() {
         let comprasIng = new Compra(nombre, cantidad);
         let stockDispo = productoA.find((c) => c.stock >= cantidad);
         if (stockDispo) {
-            if (stockDispo.stock > "0") {
+            if ((stockDispo.stock > "0") || (cantidad < productoA[4])) {
                 alert("El articulo que usted desea se encuentra disponible");
                 compras.push(comprasIng);
                 let indice = productoA.findIndex((c) => c.stock >= cantidad);
@@ -45,7 +45,6 @@ function stock() {
                 console.log(compras);
                 let ahora = new Date();
                 alert("Gracias por su compra" + ", " + ahora.toLocaleString());
-                break;
             } else {
                 alert("El articulo que usted desea NO se encuentra disponible");
             }
