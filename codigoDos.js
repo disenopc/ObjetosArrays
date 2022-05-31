@@ -34,13 +34,15 @@ function stock() {
         }
         let cantidad = parseInt(prompt("Ingrese la cantidad deseada"));
         let comprasIng = new Compra(nombre, cantidad);
-        let stockDispo = productoA.find((c) => c.stock >= cantidad);
+        let stockDispo = productoA.find((c) => c.nombre == nombre);
+
         if (stockDispo) {
-            if ((cantidad > 0) && (cantidad < stock)) {
+            if ((cantidad > 0) && (cantidad < stockDispo.stock)) {
                 alert("El articulo que usted desea se encuentra disponible");
                 compras.push(comprasIng);
-                let indice = productoA.findIndex((c) => c.stock >= cantidad);
+                let indice = productoA.findIndex((c) => c.nombre == nombre);
                 productoA[indice].stock = productoA[indice].stock - cantidad;
+                console.log("El stock disponible ", stockDispo);
                 console.log(compras);
                 let ahora = new Date();
                 alert("Gracias por su compra" + ", " + ahora.toLocaleString());
