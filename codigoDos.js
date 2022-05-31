@@ -18,10 +18,10 @@ class Producto {
     }
 };
 const productoA = [];
-productoA.push(new Producto("WALTCAN ADULTO", "Alimento Balanceado", 1200, 0));
-productoA.push(new Producto("WALTCAN CACHORRO", "Alimento Balanceado", 1000, 10));
-productoA.push(new Producto("JASPE ADULTO", "Alimento Balanceado", 1200, 15));
-productoA.push(new Producto("JASPE CACHORRO", "Alimento Balanceado", 1000, 10));
+productoA.push(new Producto("waltcan adulto", "Alimento Balanceado", 1200, 0));
+productoA.push(new Producto("waltcan cachorro", "Alimento Balanceado", 1000, 10));
+productoA.push(new Producto("jaspe adulto", "Alimento Balanceado", 1200, 15));
+productoA.push(new Producto("jaspe cachorro", "Alimento Balanceado", 1000, 10));
 console.log(productoA);
 const compras = [];
 
@@ -36,7 +36,7 @@ function stock() {
         let comprasIng = new Compra(nombre, cantidad);
         let stockDispo = productoA.find((c) => c.stock >= cantidad);
         if (stockDispo) {
-            if ((cantidad > 0) && (cantidad > stock)) {
+            if ((cantidad > 0) && (cantidad < stock)) {
                 alert("El articulo que usted desea se encuentra disponible");
                 compras.push(comprasIng);
                 let indice = productoA.findIndex((c) => c.stock >= cantidad);
